@@ -1,0 +1,16 @@
+stops_gtfs metadata 
+
+stops/terminals_gtfs.shp 
+-This is the same data as in the ‘stops.txt’ file of the gtfs data.
+-It contains ~2300 stops and ~200 terminals. 
+-There are sometimes two (or more) stops with the same name, if they are on opposite sides of the street or if they were too far apart to aggregate. 
+-For terminals, the ‘stop_id’ starts with a ’T’, for regular stops, it starts with an ’S’.
+
+-There is a field indicating the number of passengers boarding + alighting at each stop (sum_use). There’s also a field indicating the number of original stops aggregated to find ‘sum_use’ (su_cnt). 
+
+**note: The values for ‘sum_use’ are approximate and some are missing. 
+To arrive at the number, I joined the 'stops_all.shp' file to the gtfs file with an imperfect key. So some records were lost (underestimation of passengers) and others may be part of the sum calculation more than once (overestimation of passengers). 
+
+stops/terminals_unique_gtfs.shp
+-This data has exactly one stop for each unique stop name. So stops on both sides of the street with the same name, and stops that are far apart (but on the same street segment) with the same name will appear as a single stop. 
+-Could be good for mapping. 
